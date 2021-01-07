@@ -34,7 +34,6 @@ import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
-import /vendor/etc/init/hw/init.safailnet.rc
 
 #ifdef VENDOR_EDIT
 #Fei.Mo@BSP.senosor 2018/10/30 add for init.oppo.vendor.motor.rc
@@ -1449,10 +1448,12 @@ on property:oppo.wifirftest.enable=0
 
 # Smart Charging
 on boot
-    chmod 0666 /sys/class/power_supply/battery/input_suspend
-    chmod 0666 /sys/class/power_supply/battery/charging_enabled
     chown system system /sys/class/power_supply/battery/input_suspend
     chown system system /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/mmi_charging_enable
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/mmi_charging_enable
 
 # FPS Info
     chown system graphics /sys/class/drm/sde-crtc-0/measured_fps

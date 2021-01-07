@@ -45,6 +45,8 @@ import androidx.preference.TwoStatePreference;
 
 import android.os.FileUtils;
 
+import org.lineageos.settings.device.SeekBarPreference;
+
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
@@ -54,6 +56,7 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_DC_SWITCH = "dc";
     public static final String KEY_OTG_SWITCH = "otg";
     public static final String KEY_GAME_SWITCH = "game";
+    public static final String KEY_CHARGING_SWITCH = "smart_charging";
 
     public static final String TP_LIMIT_ENABLE = "/proc/touchpanel/oppo_tp_limit_enable";
     public static final String TP_DIRECTION = "/proc/touchpanel/oppo_tp_direction";
@@ -65,6 +68,8 @@ public class DeviceSettings extends PreferenceFragment
     private static TwoStatePreference mSRGBModeSwitch;
     private static TwoStatePreference mOTGModeSwitch;
     private static TwoStatePreference mGameModeSwitch;
+    private static TwoStatePreference mSmartChargingSwitch;
+    public static SeekBarPreference mSeekBarPreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -96,6 +101,13 @@ public class DeviceSettings extends PreferenceFragment
         mGameModeSwitch.setEnabled(GameModeSwitch.isSupported());
         mGameModeSwitch.setChecked(GameModeSwitch.isCurrentlyEnabled(this.getContext()));
         mGameModeSwitch.setOnPreferenceChangeListener(new GameModeSwitch());
+
+        mSmartChargingSwitch = (TwoStatePreference) findPreference(KEY_CHARGING_SWITCH);
+        mSmartChargingSwitch.setChecked(prefs.getBoolean(KEY_CHARGING_SWITCH, false));
+        mSmartChargingSwitch.setOnPreferenceChangeListener(new SmartChargingSwitch(getContext()));
+
+        mSeekBarPreference = (SeekBarPreference) findPreference("seek_bar");
+        mSeekBarPreference.setEnabled(mSmartChargingSwitch.isChecked());
     }
 
     @Override

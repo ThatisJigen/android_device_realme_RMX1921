@@ -22,3 +22,6 @@ type proc_audio_file, file_type, data_file_type, core_data_file_type;
 
 # FPS
 type sysfs_fps, sysfs_type, fs_type;
+
+# Smart Charging
+type sysfs_scharge, sysfs_type, fs_type;
