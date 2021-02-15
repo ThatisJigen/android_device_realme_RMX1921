@@ -16,3 +16,5 @@ allow init vendor_file:file execute;
 allow init vendor_data_file:file lock;
 allow init hal_audio_default:binder call;
 allow init platform_app:binder call;
+allow init self:netlink_route_socket rw_socket_perms;
+allow init self:rawip_socket create_socket_perms;
