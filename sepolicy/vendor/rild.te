@@ -3,3 +3,7 @@ r_dir_file(rild, proc_devinfo);
 allow rild system_data_file:dir getattr;
 allow rild block_device:dir search;
 allow rild opporadio_hwservice:hwservice_manager add;
+allow rild vendor_file:file ioctl;
+typeattribute rild data_between_core_and_vendor_violators;
+allow rild tombstone_data_file:dir rw_dir_perms;
+allow rild tombstone_data_file:file rw_file_perms;

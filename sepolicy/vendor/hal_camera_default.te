@@ -17,3 +17,4 @@ allow hal_camera_default default_prop:file { map getattr };
 allow hal_camera_default unlabeled:dir { search };
 allow hal_camera_default radio_prop:file { getattr };
 allow hal_camera_default default_prop:file { getattr };
+allow hal_camera_default sysfs_thermal:file w_file_perms;
