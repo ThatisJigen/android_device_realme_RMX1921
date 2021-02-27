@@ -6,3 +6,7 @@ allow hal_sensors_default sensors_dbg_prop:file { getattr open read };
 get_prop(hal_sensors_default, sensors_dbg_prop);
 get_prop(hal_sensors_default, sensors_prop);
 allow hal_sensors_default proc_touchpanel:file write;
+
+userdebug_or_eng(`
+  get_prop(hal_sensors_default, sensors_dbg_prop)
+')

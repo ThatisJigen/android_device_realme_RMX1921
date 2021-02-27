@@ -1,0 +1,1 @@
+allow location hal_cacert_hwservice:hwservice_manager find;

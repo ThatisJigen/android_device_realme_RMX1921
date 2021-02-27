@@ -1,0 +1,2 @@
+allow zygote system_file:dir write;
+allow zygote zygote:capability kill;
