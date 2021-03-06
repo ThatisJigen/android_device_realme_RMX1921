@@ -110,7 +110,7 @@
             </intent-filter>
         </service>
         <service android:name="org.lineageos.settings.device.SmartChargingService"
-                android:exported="false">
+                android:exported="false" android:persistent="true">
         </service>
     </application>
 </manifest>
