@@ -34,3 +34,4 @@ allow init self:capability2 block_suspend;
 allow init sysfs_io_sched_tuneable:file { open read write };
 allow init hal_dpmQmiMgr:binder call;
 allow init self:capability2 wake_alarm;
+allow init su:process { noatsecure  rlimitinh  siginh  transition };
